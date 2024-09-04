@@ -3,7 +3,7 @@ Two-Pass Assembler - Pass 1 Implementation
 
 Assignment Overview :
 
-This project implements Pass 1 of a two-pass assembler for a hypothetical machine. The assembler is responsible for:
+This assignment implements Pass 1 of a two-pass assembler for a hypothetical machine. The assembler is responsible for:
 1.Processing assembly instructions, directives, and handling forward references.
 2.Generating the symbol table and intermediate code file.
 3.Detecting and reporting errors such as symbols used but not defined, invalid instructions, and invalid register usage.
