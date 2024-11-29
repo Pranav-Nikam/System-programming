@@ -1,0 +1,92 @@
+---------------------------
+MNT:
+
+Index   MACRO   #PP     #KP     #EV     MDTP    KPDTP   SSTP
+1:      SAMPLE  2       2       1       1       1       1
+2:      CALC    2       2       1       8       3       3
+3:      INCR    2       1       2       13      5       5
+
+---------------------------
+MDT:
+
+Index   MACRO Definition
+
+1:      LCL     (E, 1)
+2:      (E,1)   SET     0
+3:      MOVER   (P,3)   ="0"
+4:      (S, 1)  MOVEM   (P,3)   (P,1)   +       (E,1)
+5:      (S, 2)  (E,1)   SET     (E,1)   +       1
+6:      AIF     (E,1)   NE      (P,2)   (S, 1)
+7:      MEND
+8:      LCL     (E, 2)
+9:      (S, 3)  (E,2)   SET     (P,5)
+10:     ADD     (P,7)   (P,6)
+11:     (S, 4)  MOVEM   (P,8)   (P,5)
+12:     MEND
+13:     GBL     (E, 3)  (E, 4)
+14:     (S, 5)  ADD     (P,9)   (P,10)
+15:     SUB     (P,11)  (P,9)
+16:     (S, 6)  MUL     (P,11)  15
+17:     MEND
+
+---------------------------
+PNTAB:
+
+Index   Parameter Name
+
+1:      X
+2:      N
+3:      REG
+4:      REG1
+5:      Z
+6:      W
+7:      REG2
+8:      REG3
+9:      A
+10:     B
+11:     Q
+
+---------------------------
+EVNTAB:
+
+Index   EV Name
+
+1:      M
+2:      T
+3:      NUM
+4:      ALPHA
+
+---------------------------
+SSNTAB:
+
+Index   SS Name
+
+1:      MORE
+2:      AGAIN
+3:      LABEL
+4:      LOOP
+5:      NEXT
+6:      STEP
+
+---------------------------
+KPDTAB:
+
+Index   Parameter       Value
+
+1:      REG     AREG
+2:      REG1    BRAG
+3:      REG2    CREG
+4:      REG3    DREG
+5:      Q       10
+
+---------------------------
+SSTAB:
+
+Index   MDT_ENTRY
+
+1:      4
+2:      5
+3:      9
+4:      11
+5:      14
+6:      16
