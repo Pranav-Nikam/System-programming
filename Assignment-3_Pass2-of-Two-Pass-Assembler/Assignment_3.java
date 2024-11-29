@@ -419,8 +419,11 @@ class Pass2 extends Pass1 {
             }
 
             if (opcode != null) {
-                if(opcode.equals("(AD, 21)") || opcode.equals("(DL, 01)")){
+                if(opcode.equals("(AD, 21)")){
                     opcode = "  ";
+                }
+                else if(opcode.equals("(DL, 01)") || opcode.startsWith("(DL, 02)")){
+                    opcode = "--";
                 }
                 else{
                     opcode = opcode.equals("(DL, 02)") ? "(DL, 02)" : opcode.replaceAll("[^0-9]", "");
@@ -432,10 +435,6 @@ class Pass2 extends Pass1 {
             if (operand2 != null) {
                 operand2 = opcode.equals("(DL, 02)") ? "  " : processOperand(operand2);
             }
-            if(opcode.startsWith("(DL, 02)")){
-                opcode = "--";
-            }
-            
 
             String machineCode = (opcode == null ? "" : opcode) + 
                                  (operand1.isEmpty() ? "" : "  " + operand1) + 
