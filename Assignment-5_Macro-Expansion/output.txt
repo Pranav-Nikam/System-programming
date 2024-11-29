@@ -1,0 +1,116 @@
+---------------------------
+MNT:
+
+Index   MACRO   #PP     #KP     #EV     MDTP    KPDTP   SSTP
+1:      SAMPLE  2       1       1       1       1       1
+2:      DEC     1       1       1       8       2       2
+
+---------------------------
+MDT:
+
+Index   MACRO Definition
+
+1:      LCL     (E, 1)
+2:      (E,1)   SET     0
+3:      (S, 1)  MOVER   (P,3)   ="0"
+4:      MOVEM   (P,3)   (P,1)   +       (E,1)
+5:      (E,1)   SET     (E,1)   +       1
+6:      AIF     (E,1)   NE      10      (S, 1)
+7:      MEND
+8:      LCL     (E, 2)
+9:      (E,2)   SET     5
+10:     MOVER   AREG    (P,5)
+11:     (S, 2)  SUB     (P,4)   (E,2)
+12:     (E,2)   SET     (E,2)   -       1
+13:     AIF     (E,2)   GT      0       (S, 2)
+14:     MEND
+
+---------------------------
+PNTAB:
+
+Index   Parameter Name
+
+1:      X
+2:      N
+3:      REG
+4:      Q
+5:      REG1
+
+---------------------------
+EVNTAB:
+
+Index   EV Name
+
+1:      M
+2:      Z
+
+---------------------------
+SSNTAB:
+
+Index   SS Name
+
+1:      MORE
+2:      NEXT
+
+---------------------------
+KPDTAB:
+
+Index   Parameter       Value
+
+1:      REG     AREG
+2:      REG1    BREG
+
+---------------------------
+SSTAB:
+
+Index   MDT_ENTRY
+
+1:      3
+2:      11
+
+---------------------------
+APTAB:
+
+Index    Parameter      Value
+
+1:       X      P1
+2:       Q      ALPHA
+3:       REG1   BEAG
+4:       REG    CREG
+5:       N      NUM
+
+---------------------------
+
+Expanded MACRO (Output.txt) :
+
+START
+MOV AREG, BREG
+MUL AREG, NUM
+MOVER CREG ="0"
+MOVEM CREG P1 + 0
+MOVER CREG ="0"
+MOVEM CREG P1 + 1
+MOVER CREG ="0"
+MOVEM CREG P1 + 2
+MOVER CREG ="0"
+MOVEM CREG P1 + 3
+MOVER CREG ="0"
+MOVEM CREG P1 + 4
+MOVER CREG ="0"
+MOVEM CREG P1 + 5
+MOVER CREG ="0"
+MOVEM CREG P1 + 6
+MOVER CREG ="0"
+MOVEM CREG P1 + 7
+MOVER CREG ="0"
+MOVEM CREG P1 + 8
+MOVER CREG ="0"
+MOVEM CREG P1 + 9
+NUM DC 10
+MOVER AREG BEAG
+SUB ALPHA 5
+SUB ALPHA 4
+SUB ALPHA 3
+SUB ALPHA 2
+SUB ALPHA 1
+END
